@@ -93,3 +93,15 @@ test_that("epoch() finds Monday of 'start' week (ISO)", {
     ## failed in surveillance 1.18.0, where epoch(x, as.Date=TRUE)
     ## used %W to interpret the 'start' week, so here returned "2020-02-03"
 })
+
+test_that("expected stop() message is produced", {
+    expect_error(sts(c(1:3), map = c(1:3)),
+    "'map' must be of class 'sf' or 'SpatialPolygons'")
+})
+
+test_that("transforming 'Simple Features' (sf) input to 'SpatialPolygons' (sp)", if (requireNamespace("sf")) {
+    data(fluBYBW)
+    map_sf <- sf::st_as_sf(fluBYBW@map)
+    sts(observed(fluBYBW), map = map_sf)
+    expect_inherits(fluBYBW@map, "SpatialPolygons")
+})

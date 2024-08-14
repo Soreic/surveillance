@@ -59,7 +59,7 @@
 
 \usage{
 sts(observed, start = c(2000, 1), frequency = 52,
-    epoch = NULL, population = NULL, ...)
+    epoch = NULL, population = NULL, map = NULL, ...)
 }
 
 \arguments{
@@ -87,6 +87,12 @@ sts(observed, start = c(2000, 1), frequency = 52,
     \code{population} argument is an alias for the corresponding slot
     \code{populationFrac}. The default \code{NULL} value sets
     equal population fractions across all units.}
+  \item{map}{spatial data to connect the spatial layout of the regions,
+    where the data originate from, either of class 
+    \code{"\linkSPclass{SpatialPolygons}"} 
+    (or \code{"\linkSPclass{SpatialPolygonsDataFrame}"}) or of class
+    \code{"\link[sf]{sf}"}. To use "sf" data as input, "sf" has to be
+    installed.}
   \item{\dots}{further named arguments with names corresponding to slot
     names (see the list below). For instance, in the public health surveillance context,
     the \code{state} slot is used to indicate outbreaks (default:
@@ -240,7 +246,7 @@ sts(observed, start = c(2000, 1), frequency = 52,
 
 }
 
-\author{Michael \enc{Höhle}{Hoehle} and Sebastian Meyer}
+\author{Michael \enc{Hï¿½hle}{Hoehle} and Sebastian Meyer}
 
 \examples{
 showClass("sts")
